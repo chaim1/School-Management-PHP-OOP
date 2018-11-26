@@ -1,9 +1,18 @@
 <?php
 
 ?>
-<aside class="col-5">
+
+
+<aside class="col-4">
 
     <div class="aside">
     </div>
 
 </aside>
+
+<!-- <aside class="col-4">
+
+<div class="aside">
+</div>
+
+</aside> -->

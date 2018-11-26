@@ -1,10 +1,9 @@
 <?php
 
 ?>
-<main class="col">
 
-    <div class="aside">
+
+    <div class="aside col">
 
     </div>
 
-</main>

@@ -3,7 +3,7 @@
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
     }
-    $_SESSION['rank']='';
+    $_SESSION['rank']='3';
 
 ?>
 
@@ -13,7 +13,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">School</a>
+          <a class="nav-link" href="home.php">School</a>
         </li>
         <?php if($_SESSION['rank']!=='3'){?>
           <li class="nav-item">
