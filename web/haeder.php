@@ -33,7 +33,7 @@
           <a href="#"><img class="img-nav" src="images/rols/<?php echo $admin->getImage()?>" alt=""></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <button class="nav-link" href="">Logout</button>
         </li>
       </ul>
   </div>
