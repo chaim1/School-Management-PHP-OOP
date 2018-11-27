@@ -1,11 +1,11 @@
 .footer-down{
-    min-height: 80vh;
+    min-height: 77vh;
 
 }
 .aside{
     height: 77vh;
     border: 1px solid black;
-    background-color: gainsboro;
+    /* background-color: gainsboro; */
 }
 .img-nav{
     width: 70px;
