@@ -5,13 +5,13 @@ $arrayOfAdmins = $abl->ActionGetAdmin();
 ?>
 <div class="col-6">
     
-        <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
+        <form class="pt-3" action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
             <h5><strong>Administrators</strong>
                 <button class="" name="addCourse">+</button>
             </h5>
         </form>   
     
-    <hr>
+    <hr size="10" noshade width="170" align="left">
     <?php foreach($arrayOfAdmins as $Admin) {?>
         <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
         <input class="d-none" type="number" name="corseId" value="<?php echo $Admin->getId()?>">

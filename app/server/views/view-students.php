@@ -4,11 +4,11 @@ $arrayOfStudents = $conS->ActionGetStudent();
 
 ?>
 <div class="col-6">
-    <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
+    <form class="pt-3" action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
             <h5><strong>Students</strong>
                 <button class="" name="addStudent">+</button>
             </h5>
-            <hr>
+            <hr  size="10" noshade width="200" align="left">
         </form>
     
     <?php foreach($arrayOfStudents as $student) {?>
