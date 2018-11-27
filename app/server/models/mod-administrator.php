@@ -1,6 +1,7 @@
 <?php  
 include_once 'model.php';
 include_once 'app/server/bl/bl-administrators.php';
+require_once 'app/server/bl/bl-roles.php';
 
 
     class ModelAdministrator  implements IModel
@@ -9,8 +10,11 @@ include_once 'app/server/bl/bl-administrators.php';
         private $role_id;     
         private $name;  
         private $phone;        
-        private $email;        
+        private $email;   
+        private $Username;  
+        private $Image;       
         private $pwd;  
+        private $roleModel;
         
         function __construct($arr) {
 
@@ -25,6 +29,10 @@ include_once 'app/server/bl/bl-administrators.php';
                 $this->phone = $arr['phone']; 
 
                 $this->email = $arr['email']; 
+
+                $this->Username = $arr['Username']; 
+
+                $this->Image = $arr['Image']; 
 
                 $this->pwd = $arr['pwd']; 
 
@@ -53,6 +61,14 @@ include_once 'app/server/bl/bl-administrators.php';
             return $this->email;
         }
 
+        public function getUsername() {
+            return $this->Username;
+        }
+
+        public function getImage() {
+            return $this->Image;
+        }
+
         public function getPwd() {
             return $this->pwd;
         }
@@ -76,8 +92,25 @@ include_once 'app/server/bl/bl-administrators.php';
             $this->email =$email;
         }
 
+        public function setUsername($Username) {
+            $this->Username =$Username;
+        }
+
+        public function setImage($Image) {
+            $this->Image =$Image;
+        }
+
         public function setPwd($pwd) {
             $this->pwd =$pwd;
+        }
+
+        // Lazy load
+        function getRoleModel() {
+            if (empty($this->roleModel)) {
+                $rbl = new BusinessLogicRoles;
+                $this->roleModel = $rbl->getOne($this->role_id);
+            }
+            return $this->roleModel;
         }
 
 

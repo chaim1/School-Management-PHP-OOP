@@ -1,8 +1,8 @@
 <?php
 include_once 'bl.php' ; 
-include_once '../models/mod-roles.php' ; 
+include_once 'app/server/models/mod-roles.php' ; 
 
- class BusinessLogicCourses extends BusinessLogic {
+ class BusinessLogicRoles extends BusinessLogic {
 
     public function get()
     {
@@ -17,6 +17,18 @@ include_once '../models/mod-roles.php' ;
 
         return $resultsArray;
         
+    }
+
+    public function getOne($id)
+    {
+        $query = 'SELECT * FROM `roles` WHERE `role_id`= :id';
+        
+        $results = $this->getDal()->selectOne($query, [
+            'id' => $id
+        ]);
+        $row = $results->fetch();
+
+        return new ModelRoles($row);
     }
 
     public function set($param){}

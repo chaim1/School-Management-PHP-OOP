@@ -3,7 +3,8 @@
     <div class="mx-auto w-50 p-5">
 
 <!--  for errors -->
-        <?php if ($hasErrors) { ?>
+        <?php if ($_SESSION['hasErrors'] == true) { 
+            $arreyOfErrors=$abl->getErrors()?>
                 <ul class="list-group">
 
                     <?php foreach ($arreyOfErrors as $error) { ?>
@@ -11,12 +12,12 @@
                     <?php } ?>
 
                 </ul>
-            </div>
+            
         <?php } ?>
 
 <!-- login input-->
 
-        <form action="" method="post">
+        <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="post">
             <div class="form-group">   
                 <label for="userNameLogin"></label>User name
                 <input class="form-control" type="text" name="userNameLogin">
@@ -30,4 +31,5 @@
             </div> 
         </form>
     </div>    
+    </div>
 </div>

@@ -1,10 +1,23 @@
 <?php
-
-    if (session_status() == PHP_SESSION_NONE) {
+include_once 'app/server/controlers/cont-administrator.php';
+$abl = new AdminController;
         session_start();
-        $hasErrors = false;
+        if(!isset($_POST['LoginLogin'])){
+            $_SESSION['hasErrors']= false;
+            $_SESSION['rank']='';
+        }
+   
+    
+
+    if(isset($_POST['LoginLogin'])){
+        if(!empty($_POST['userNameLogin']&&!empty($_POST['pwdLogin']))){
+        
+            $userName = $_POST['userNameLogin'];
+            $password = $_POST['pwdLogin'];
+            $control = $abl->ActionGetLogin($userName, $password);
+    
+        }
     }
-    $_SESSION['role']='';
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,12 +56,12 @@
 
     <main class="row mt-3">
 
-        <?php if(empty($_SESSION['role'])){
+        <?php if(empty($_SESSION['rank'])){
 
-            include_once 'web/login.php';
+            require_once 'web/login.php';
 
             ?>
-        <?php }elseif(!empty($_SESSION['role'])){
+        <?php }elseif(!empty($_SESSION['rank'])){
 
             include_once 'web/aside.php';
             include_once 'web/main.php';

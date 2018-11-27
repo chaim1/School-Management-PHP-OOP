@@ -3,8 +3,7 @@
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
     }
-    $_SESSION['rank']='3';
-
+    $admin = $abl->getAdminModel();
 ?>
 
 <nav class="col-12 navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -25,13 +24,13 @@
   <div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Name</a>
+          <a class="nav-link" href="#"><?php echo $admin->getName()?> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Type</a>
+          <a class="nav-link" href="#"><?php echo $admin->getRoleModel()->getDescription()?></a>
         </li>
         <li >
-          <a href="#"><img class="img-nav" src="images/rols/git.png" alt=""></a>
+          <a href="#"><img class="img-nav" src="images/rols/<?php echo $admin->getImage()?>" alt=""></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>
