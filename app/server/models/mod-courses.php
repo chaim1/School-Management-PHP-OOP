@@ -1,6 +1,6 @@
 <?php  
 include_once 'model.php';
-include_once '../bl/bl-courses.php';
+include_once 'app/server/bl/bl-courses.php';
 
 
     class ModelCourses  implements IModel

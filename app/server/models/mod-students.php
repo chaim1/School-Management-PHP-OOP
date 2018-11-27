@@ -1,6 +1,6 @@
 <?php  
 include_once 'model.php';
-include_once '../bl/bl-students.php';
+require_once 'app/server/bl/bl-students.php';
 
 
     class ModelStudents  implements IModel

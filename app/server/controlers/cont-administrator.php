@@ -18,29 +18,30 @@ class AdminController
                 $_SESSION['hasErrors']= true;
                 array_push($this->arreyOfErrors, 'Username does not exist');
                 require_once 'index.php';
-
-        }
+            }
             elseif($password !== $admin->getPwd()){
 
                 $_SESSION['hasErrors']= true;
                 array_push($this->arreyOfErrors, 'Incorrect password');
                 $_SESSION['rank']='';
-                include_once 'index.php';
-                
-        }
+                include_once 'index.php';  
+            }
             elseif($username == $admin->getUsername() && $password == $admin->getPwd()){
                 $this->AdminId =$admin->getId();
                 $_SESSION['rank'] = $admin->getRole_id();
                 $_SESSION['name'] = $admin->getName();
                 $_SESSION['type'] = $admin->getRoleModel()->getDescription();
-                $_SESSION['image'] = $admin->getImage();
-                // var_dump($_SESSION);
-                // die();      
+                $_SESSION['image'] = $admin->getImage();     
+            }
+        } 
+        public function getErrors() {
+            return $this->arreyOfErrors;
         }
 
-
-        }public function getErrors() {
-            return $this->arreyOfErrors;
+        public function ActionGetAdmin(){
+            $blA =  new  BusinessLogicAdministrator;
+            $Admins = $blA->get();
+            return $Admins;
         }
 
         // public function getAdminModel() {

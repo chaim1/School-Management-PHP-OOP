@@ -1,18 +1,21 @@
 <?php
-include_once 'app/server/controlers/cont-administrator.php';
-$abl = new AdminController;
-        session_start();
-        if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])){
-            $_SESSION['hasErrors']= false;
-            $_SESSION['rank']='';
-            $_SESSION['name']='';
-            $_SESSION['type']='';
-            $_SESSION['image']='';
-            $_SESSION['header']='schoolHome';
-        }
-   
-    
+    include_once 'app/server/controlers/cont-administrator.php';
+    include_once 'app/server/controlers/cont-courses.php';
+    include_once 'app/server/controlers/cont-roles.php';
+    include_once 'app/server/controlers/cont-students.php';
+    $abl = new AdminController;
+    session_start();
 
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])){
+        $_SESSION['hasErrors']= false;
+        $_SESSION['rank']='';
+        $_SESSION['name']='';
+        $_SESSION['type']='';
+        $_SESSION['image']='';
+        $_SESSION['header']='schoolHome';
+        $_SESSION['main']='';
+    }
+   
     if(isset($_POST['LoginLogin'])){
         if(!empty($_POST['userNameLogin']&&!empty($_POST['pwdLogin']))){
         

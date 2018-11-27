@@ -1,6 +1,6 @@
 <?php
 include_once 'bl.php' ; 
-include_once '../models/mod-courses.php' ; 
+include_once 'app/server/models/mod-courses.php' ; 
 
  class BusinessLogicCourses extends BusinessLogic {
 
