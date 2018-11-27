@@ -4,7 +4,7 @@ require_once 'app/server/bl/bl-administrators.php';
 class AdminController  
     {
         private $arreyOfErrors=[]; 
-        private $AdminModel; 
+        // private $AdminModel; 
         private $AdminId; 
 
 
@@ -30,18 +30,12 @@ class AdminController
         }
             elseif($username == $admin->getUsername() && $password == $admin->getPwd()){
                 $this->AdminId =$admin->getId();
-
-                if($admin->getRole_id()==1){
-                    $_SESSION['rank']='1';
-
-                }elseif($admin->getRole_id()==2){
-                    $_SESSION['rank']='2';
-
-                }elseif($admin->getRole_id()==3){
-                    $_SESSION['rank']='3';
-
-                }
-                    
+                $_SESSION['rank'] = $admin->getRole_id();
+                $_SESSION['name'] = $admin->getName();
+                $_SESSION['type'] = $admin->getRoleModel()->getDescription();
+                $_SESSION['image'] = $admin->getImage();
+                // var_dump($_SESSION);
+                // die();      
         }
 
 
@@ -49,12 +43,12 @@ class AdminController
             return $this->arreyOfErrors;
         }
 
-        public function getAdminModel() {
-            if (empty($this->AdminModel)) {
-                $bla = new BusinessLogicAdministrator;
-                $this->AdminModel = $bla->getOne($this->AdminId);
-            }
-            return $this->AdminModel;
-        }
+        // public function getAdminModel() {
+        //     if (empty($this->AdminModel)) {
+        //         $bla = new BusinessLogicAdministrator;
+        //         $this->AdminModel = $bla->getOne($this->AdminId);
+        //     }
+        //     return $this->AdminModel;
+        // }
 
 }

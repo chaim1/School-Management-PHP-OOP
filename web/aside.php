@@ -1,18 +1,17 @@
-<?php
+<?php if($_SESSION['header']== 'schoolHome'){?>
 
-?>
+    <aside class="col-4">
 
+        <div class="aside">
+        </div>
 
-<aside class="col-4">
+    </aside>
+<?php }elseif($_SESSION['header']== 'AdministratorHome'){?>
 
-    <div class="aside">
-    </div>
+    <aside class="col-4">
 
-</aside>
+        <div class="aside">
+        </div>
 
-<!-- <aside class="col-4">
-
-<div class="aside">
-</div>
-
-</aside> -->
+    </aside>
+<?php }?>

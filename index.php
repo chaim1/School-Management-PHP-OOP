@@ -2,9 +2,13 @@
 include_once 'app/server/controlers/cont-administrator.php';
 $abl = new AdminController;
         session_start();
-        if(!isset($_POST['LoginLogin'])){
+        if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])){
             $_SESSION['hasErrors']= false;
             $_SESSION['rank']='';
+            $_SESSION['name']='';
+            $_SESSION['type']='';
+            $_SESSION['image']='';
+            $_SESSION['header']='schoolHome';
         }
    
     
@@ -18,6 +22,19 @@ $abl = new AdminController;
     
         }
     }
+
+    if(isset($_GET['logout'])){
+        session_destroy();
+        header("Location: index.php");
+    }
+
+    if(isset($_GET['schoolHome'])){
+        $_SESSION['header']='schoolHome';
+    }
+    if(isset($_GET['AdministratorHome'])){
+        $_SESSION['header']='AdministratorHome';
+    }
+    
 ?>
 <!doctype html>
 <html lang="en">
