@@ -1,9 +1,10 @@
 <?php
-    $hasErrors = false;
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
+        $hasErrors = false;
     }
-    $_SESSION['role']='1';
+    $_SESSION['role']='';
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,14 +30,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.14/js/mdb.min.js"></script>
-    <link rel="stylesheet" href="../test.css">
+    <link rel="stylesheet" href="test.css">
 
   </head>
 <body class="container-fluid mt-5">
 
     <header class="row">
         <?php
-            include_once 'haeder.php';
+            include_once 'web/haeder.php';
         ?>
     </header>
 
@@ -44,13 +45,13 @@
 
         <?php if(empty($_SESSION['role'])){
 
-            include_once 'login.php';
+            include_once 'web/login.php';
 
             ?>
         <?php }elseif(!empty($_SESSION['role'])){
 
-            include_once 'aside.php';
-            include_once 'main.php';
+            include_once 'web/aside.php';
+            include_once 'web/main.php';
         }
         ?>
 
@@ -58,7 +59,7 @@
 
     <footer class="row">
         <?php
-            include_once 'footer.php';
+            include_once 'web/footer.php';
         ?>
     </footer>
 

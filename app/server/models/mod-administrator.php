@@ -1,6 +1,6 @@
 <?php  
 include_once 'model.php';
-include_once '../bl/bl-administrators.php';
+include_once 'app/server/bl/bl-administrators.php';
 
 
     class ModelAdministrator  implements IModel

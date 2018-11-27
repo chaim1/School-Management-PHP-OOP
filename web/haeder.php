@@ -8,7 +8,7 @@
 ?>
 
 <nav class="col-12 navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a href="#"><img class="img-nav" src="../images/rols/git.png" alt=""></a>
+  <a href="#"><img class="img-nav" src="images/rols/git.png" alt=""></a>
 <?php if($_SESSION['rank']=='1'||$_SESSION['rank']=='2'||$_SESSION['rank']=='3'){?>
   <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -31,7 +31,7 @@
           <a class="nav-link" href="#">Type</a>
         </li>
         <li >
-          <a href="#"><img class="img-nav" src="../images/rols/git.png" alt=""></a>
+          <a href="#"><img class="img-nav" src="images/rols/git.png" alt=""></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>

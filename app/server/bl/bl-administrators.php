@@ -1,6 +1,6 @@
 <?php
 include_once 'bl.php' ; 
-include_once '../models/mod-administrator.php' ; 
+include_once 'app/server/models/mod-administrator.php' ; 
 
  class BusinessLogicAdministrator extends BusinessLogic {
 
@@ -63,6 +63,17 @@ include_once '../models/mod-administrator.php' ;
         ]);
         $row = $results->fetch();
 
+        return new ModelAdministrator($row);
+    }
+
+    public function getOneByUserName($un)
+    {
+        $query = 'SELECT * FROM `Administrator` WHERE 	`name` = :un';
+        
+        $results = $this->getDal()->selectOne($query, [
+            'un' => $un
+        ]);
+        $row = $results->fetch();
         return new ModelAdministrator($row);
     }
 
