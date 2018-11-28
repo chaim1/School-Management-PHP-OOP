@@ -1,6 +1,6 @@
 <?php if($_SESSION['header']== 'schoolHome'){?>
 
-    <aside class="col-5">
+    <aside class="col-4">
         <div class="aside row">
             
                 <?php include_once 'app/server/views/view-courses.php'; ?>

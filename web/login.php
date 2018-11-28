@@ -24,7 +24,7 @@
             </div> 
             <div class="form-group">
                 <label for="pwdLogin"></label>Password
-                <input class="form-control" type="password" name="pwdLogin">
+                <input class="form-control" type="password" name="pwdLogin" value="123">
             </div>  
             <div class="text-center form-group">
                 <button name="LoginLogin" class="col-md-5  btn-dark btn-lg" type="submit">Login</button>
