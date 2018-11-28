@@ -1,4 +1,6 @@
 <?php
+//   var_dump( $_SERVER) ;
+//   die();
     include_once 'app/server/controlers/cont-administrator.php';
     include_once 'app/server/controlers/cont-courses.php';
     include_once 'app/server/controlers/cont-roles.php';
@@ -67,6 +69,7 @@
 
   </head>
 <body class="container-fluid mt-5">
+
 
     <header class="row">
         <?php
