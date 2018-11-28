@@ -58,7 +58,7 @@
  
 
 </form>
-<?php if($_SESSION['main'] =='showC'){?>
+<?php if($_SESSION['main'] == 'showC'){?>
 <table class="table">
     <tr>
         <th>image</th>
