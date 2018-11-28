@@ -8,6 +8,13 @@ class coursesContruler{
         $courses = $blc->get();
         return $courses;
     }
+
+    public function ActionGetOneCourses($id){
+        $blc =  new  BusinessLogicCourses;
+        $courses = $blc->getOne($id);
+        return $courses;
+    }
+
 }
 
 ?>

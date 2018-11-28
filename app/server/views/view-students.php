@@ -1,5 +1,4 @@
 <?php 
-$conS = new studentContruler;
 $arrayOfStudents = $conS->ActionGetStudent();
 
 ?>

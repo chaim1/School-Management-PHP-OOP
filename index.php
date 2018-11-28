@@ -1,21 +1,27 @@
 <?php
 //   var_dump( $_SERVER) ;
+// var_dump($_SESSION);
 //   die();
     include_once 'app/server/controlers/cont-administrator.php';
     include_once 'app/server/controlers/cont-courses.php';
     include_once 'app/server/controlers/cont-roles.php';
     include_once 'app/server/controlers/cont-students.php';
     $abl = new AdminController;
+    $conC = new coursesContruler;
+    $conS = new studentContruler;
     session_start();
-
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])){
-        $_SESSION['hasErrors']= false;
-        $_SESSION['rank']='';
-        $_SESSION['name']='';
-        $_SESSION['type']='';
-        $_SESSION['image']='';
-        $_SESSION['header']='schoolHome';
-        $_SESSION['main']='';
+    
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_GET['editCourse'])&&!isset($_GET['SaveCourse'])&&!isset($_GET['DeleteCourse'])){
+        $_SESSION['hasErrors'] = false;
+        $_SESSION['rank'] = '';
+        $_SESSION['name'] = '';
+        $_SESSION['type'] = '';
+        $_SESSION['image'] = '';
+        $_SESSION['header'] = 'schoolHome';
+        $_SESSION['main'] = '';
+        $_SESSION['mainEdit'] = '';
+        $_SESSION['coursId'] = '';
+        $_SESSION['studentId'] = '';
     }
    
     if(isset($_POST['LoginLogin'])){
@@ -34,10 +40,37 @@
     }
 
     if(isset($_GET['schoolHome'])){
-        $_SESSION['header']='schoolHome';
+        $_SESSION['header'] = 'schoolHome';
     }
     if(isset($_GET['AdministratorHome'])){
-        $_SESSION['header']='AdministratorHome';
+        $_SESSION['header'] = 'AdministratorHome';
+    }
+    if(isset($_GET['showStudent'])){
+        $_SESSION['studentId'] = $_GET['corseId'];
+        $_SESSION['main'] = 'showS';
+    }
+    if(isset($_GET['showCourse'])){
+        $_SESSION['coursId'] = $_GET['corseId'];
+        $_SESSION['main'] = 'showC';
+    }
+    if(isset($_GET['addStudent'])){
+        $_SESSION['main'] = 'addS';
+    }
+    if(isset($_GET['addCourse'])){
+        $_SESSION['main'] = 'addC';
+    }
+    if(isset($_GET['editCourse'])){
+        $_SESSION['mainEdit'] = 'EditC';
+    }
+    if(isset($_GET['SaveCourse'])){
+        $idCourse = $_GET['idOfCourse'];
+        $nameCourse  = $_GET['NameCourse'];
+        $Description = $_GET['DescriptionCourse'];
+    }
+    if(isset($_GET['DeleteCourse'])){
+        if(!empty($_GET['idOfCourse'])){
+            $idCourse = $_GET['idOfCourse'];
+        }
     }
     
 ?>

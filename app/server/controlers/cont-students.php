@@ -8,6 +8,11 @@ class studentContruler{
         $students = $bls->get();
         return $students;
     }
+    public function ActionGetOneStudent($id){
+        $blc =  new  BusinessLogicStudents;
+        $student = $blc->getOne($id);
+        return $student;
+    }
 }
 
 ?>

@@ -1,6 +1,6 @@
 
 <?php 
-$conC = new coursesContruler;
+
 $arrayOfCourses = $conC->ActionGetCourses();
 
 ?>
