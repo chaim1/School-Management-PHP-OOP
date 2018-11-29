@@ -2,6 +2,7 @@
 include_once 'bl.php' ; 
 include_once 'app/server/models/mod-courses.php' ; 
 include_once 'app/server/models/mod-sumStCr.php' ; 
+include_once 'app/server/models/mod-students.php';
 
 
  class BusinessLogicCourses extends BusinessLogic {
@@ -61,20 +62,20 @@ include_once 'app/server/models/mod-sumStCr.php' ;
             'id' => $id
         ]);
         $row = $results->fetch();
-
         $course = new ModelCourses($row);
 
-        $queryS = 'SELECT * FROM `studentCurses` WHERE `course_id`= :id';
+        $bls = new BusinessLogicStudents;
+
+        $q= 'SELECT * FROM `studentCurses` WHERE `course_id`= '.$id.'';
         
-        $resultsSt = $this->getDal()->selectOne($queryS, [
-            'id' => $id
-        ]);
-        $Student = new ModelStAndCr($resultsSt->fetch());
+        $resultsStudentCurses = $this->getDal()->select($q);
 
-        $course->ModelCourses = $Student;
-        return $course;
-
+        while ($row = $resultsStudentCurses->fetch()) {
+            array_push($course->studentModelArray , $bls->getOne($row['stdent_id']));
+        }
+       return $course;
     }
+
 
 }
 

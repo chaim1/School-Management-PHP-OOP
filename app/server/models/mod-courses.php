@@ -1,6 +1,7 @@
 <?php  
 include_once 'model.php';
 include_once 'app/server/bl/bl-courses.php';
+require_once 'app/server/bl/bl-students.php';
 
 
     class ModelCourses  implements IModel
@@ -8,7 +9,8 @@ include_once 'app/server/bl/bl-courses.php';
         private $id;        
         private $name;     
         private $description;  
-        private $image;        
+        private $image;
+        public $studentModelArray = [];       
         
         function __construct($arr) {
 
@@ -42,7 +44,11 @@ include_once 'app/server/bl/bl-courses.php';
             return $this->image;
         }
 
-        //set
+        public function getModelCoureStudents() {
+
+            return $this->studentModelArray;
+        }
+
 
 
         public function setName($name) {

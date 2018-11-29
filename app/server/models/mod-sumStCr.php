@@ -6,7 +6,7 @@ require_once 'app/server/bl/bl-courses.php';
     class ModelStAndCr 
     {
         private $stdent_id;        
-        private $course_id;     
+        private $course_id; 
                 
         
         function __construct($arr) {

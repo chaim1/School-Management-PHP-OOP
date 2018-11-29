@@ -1,5 +1,6 @@
 <?php
  $course = $conC->ActionGetOneCourses($_SESSION['coursId']);
+
  ?>
 
 <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
@@ -62,11 +63,15 @@
 <table class="table">
     <tr>
         <th>image</th>
-        <th>Name</th>
+        <th>name</th>
     </tr>
-    <tr>
-        <td><img src="" alt=""></td>
-        <td>name</td>
-    </tr>
+    
+    <?php foreach($course->getModelCoureStudents() as $student) {?>
+        <tr>
+            <td><img src="images/students/<?php   echo $student->getImage()?>" alt=""></td>
+            <td><?php   echo $student->getName()?></td>
+        </tr>
+    <?php }?>
+    
 </table>
 <?php }?>
