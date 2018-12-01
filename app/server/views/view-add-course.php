@@ -7,7 +7,7 @@
 
     <div class="form-group">
         <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''){?>
-            <input name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
+            <input  name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
             <button class="btn btn-secondary btn-lg btn-block" type="submit" name="editCourse">Edit</button>
         <?php }?>
         <?php if($_SESSION['main'] =='addC' || $_SESSION['mainEdit'] =='EditC'){?>
@@ -30,13 +30,13 @@
             <div class="form-group">Name
                 <input class="form-control" type="text" name="NameCourse">
             </div>
-        <?php }elseif($_SESSION['main'] =='showC'){?>
+        <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
             <div class="form-group">Name
-                <input class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName() ?>">
+                <input class="border-0" class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName() ?>">
              </div>
         <?php }elseif($_SESSION['main'] =='showC'   &&  $_SESSION['mainEdit'] == 'EditC'){?> 
             <div class="form-group">Name
-                <input class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName()?>">
+                <input  class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName()?>">
              </div>
         <?php }?>
     
@@ -46,9 +46,9 @@
         Description<div class="form-group">
             <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ></textarea>
             </div> 
-        <?php }elseif($_SESSION['main'] =='showC'){?>
+        <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
         Description<div class="form-group">
-            <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ><?php echo $course->getDescription()?></textarea>
+            <textarea class="border-0" class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ><?php echo $course->getDescription()?></textarea>
             </div> 
         <?php }elseif($_SESSION['main'] =='showC'   &&  $_SESSION['mainEdit'] == 'EditC'){?>
         Description<div class="form-group"> 

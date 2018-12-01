@@ -42,23 +42,29 @@
     if(isset($_GET['schoolHome'])){
         $_SESSION['header'] = 'schoolHome';
         $_SESSION['main'] = '';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['AdministratorHome'])){
         $_SESSION['header'] = 'AdministratorHome';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['showStudent'])){
         $_SESSION['studentId'] = $_GET['corseId'];
         $_SESSION['main'] = 'showS';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['showCourse'])){
         $_SESSION['coursId'] = $_GET['corseId'];
         $_SESSION['main'] = 'showC';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['addStudent'])){
         $_SESSION['main'] = 'addS';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['addCourse'])){
         $_SESSION['main'] = 'addC';
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['editCourse'])){
         $_SESSION['mainEdit'] = 'EditC';
@@ -67,10 +73,17 @@
         $idCourse = $_GET['idOfCourse'];
         $nameCourse  = $_GET['NameCourse'];
         $Description = $_GET['DescriptionCourse'];
+        $_SESSION['mainEdit'] = '';
     }
     if(isset($_GET['DeleteCourse'])){
         if(!empty($_GET['idOfCourse'])){
             $idCourse = $_GET['idOfCourse'];
+            $_SESSION['hasErrors'] = false;
+            $_SESSION['header'] = 'schoolHome';
+            $_SESSION['main'] = '';
+            $_SESSION['mainEdit'] = '';
+            $_SESSION['coursId'] = '';
+            $_SESSION['studentId'] = '';
         }
     }
     
