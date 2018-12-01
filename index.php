@@ -41,6 +41,7 @@
 
     if(isset($_GET['schoolHome'])){
         $_SESSION['header'] = 'schoolHome';
+        $_SESSION['main'] = '';
     }
     if(isset($_GET['AdministratorHome'])){
         $_SESSION['header'] = 'AdministratorHome';
