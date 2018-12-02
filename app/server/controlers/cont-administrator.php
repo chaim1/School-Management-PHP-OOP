@@ -1,7 +1,8 @@
 <?php
+require_once 'app/server/controlers/controler.php';
 require_once 'app/server/bl/bl-administrators.php';
 
-class AdminController  
+class AdminController  extends IController
     {
         private $arreyOfErrors=[]; 
         // private $AdminModel; 
