@@ -1,7 +1,7 @@
 <?php
     abstract class IController {
 
-
+//$this function accept  file and position and she put the tile
         public function ActionInsertImage($position,$tempFile){
 
             $fileName = $tempFile[key($tempFile)]['name'];
