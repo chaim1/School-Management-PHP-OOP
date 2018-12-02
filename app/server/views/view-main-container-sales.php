@@ -15,9 +15,9 @@ if($_SESSION['main']==""){
 <?php }elseif($_SESSION['main']=="addC"){
     include_once 'app/server/views/view-add-course.php';
  }elseif($_SESSION['main']=="addS"){
-    include_once 'app/server/views/view-add-course.php';
+   //  include_once 'app/server/views/view-add-course.php';
  }elseif($_SESSION['main']=="showC"){
     include_once 'app/server/views/view-add-course.php';
  }elseif($_SESSION['main']=="showS"){
-    include_once 'app/server/views/view-add-course.php';
+   //  include_once 'app/server/views/view-add-course.php';
  }?>

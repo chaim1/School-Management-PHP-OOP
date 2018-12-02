@@ -11,7 +11,7 @@
     $conS = new studentContruler;
     session_start();
     
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_GET['editCourse'])&&!isset($_GET['SaveCourse'])&&!isset($_GET['DeleteCourse'])){
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])){
         $_SESSION['hasErrors'] = false;
         $_SESSION['rank'] = '';
         $_SESSION['name'] = '';
@@ -33,21 +33,26 @@
     
         }
     }
-
+    // log out
     if(isset($_GET['logout'])){
         session_destroy();
         header("Location: index.php");
     }
 
+    // for home school
     if(isset($_GET['schoolHome'])){
         $_SESSION['header'] = 'schoolHome';
         $_SESSION['main'] = '';
         $_SESSION['mainEdit'] = '';
     }
+
+    // for home adminisfrator
     if(isset($_GET['AdministratorHome'])){
         $_SESSION['header'] = 'AdministratorHome';
         $_SESSION['mainEdit'] = '';
     }
+
+    // for show student
     if(isset($_GET['showStudent'])){
         $_SESSION['studentId'] = $_GET['corseId'];
         $_SESSION['main'] = 'showS';
@@ -66,18 +71,40 @@
         $_SESSION['main'] = 'addC';
         $_SESSION['mainEdit'] = '';
     }
-    if(isset($_GET['editCourse'])){
+    if(isset($_POST['editCourse'])){
         $_SESSION['mainEdit'] = 'EditC';
     }
-    if(isset($_GET['SaveCourse'])){
-        $idCourse = $_GET['idOfCourse'];
-        $nameCourse  = $_GET['NameCourse'];
-        $Description = $_GET['DescriptionCourse'];
-        $_SESSION['mainEdit'] = '';
+    if(isset($_POST['SaveCourse'])){
+        
+        if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])&&!empty($_FILES['AddimageCourse'])){
+            // check image errer
+            
+            // $path= 'images/courses/';
+            // $filename = basename($_FILES['AddimageCourse']['name']);
+            // $a= move_uploaded_file($_FILES['AddimageCourse']['tmp_name'], $path.$filename);
+            // var_dump($a);
+            // die();
+            $fileName = $_FILES['AddimageCourse']['name'];
+            $fileExt = explode('.',$fileName);
+            $fileActualExt = strtolower(end($fileExt));
+            $fileTmpName = $_FILES['AddimageCourse']['tmp_name'];
+            $fileNewName = uniqid('', true).".". $fileActualExt;
+            $fileDastntion = "courses/".$fileNewName;
+            move_uploaded_file($fileTmpName,$fileDastntion);
+            $course = new ModelCourses([
+                'name' => $_POST['NameCourse'],
+                'description'  => $_POST['DescriptionCourse'],
+                'image' => $fileNewName
+            ]);
+
+            $conC->ActionInsertCourses($course);
+            $_SESSION['mainEdit'] = '';
+
+        }
     }
-    if(isset($_GET['DeleteCourse'])){
-        if(!empty($_GET['idOfCourse'])){
-            $idCourse = $_GET['idOfCourse'];
+    if(isset($_POST['DeleteCourse'])){
+        if(!empty($_POST['idOfCourse'])){
+            $idCourse = $_POST['idOfCourse'];
             $_SESSION['hasErrors'] = false;
             $_SESSION['header'] = 'schoolHome';
             $_SESSION['main'] = '';

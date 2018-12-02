@@ -19,7 +19,7 @@ $arrayOfCourses = $conC->ActionGetCourses();
             <button class="border-0" name="showCourse">
                 <div class="row">
                     <div class="col-4">
-                        <img class="img-nav" src="images/rols/<?php echo $courses->getImage() ?>" alt="">
+                        <img class="img-nav" src="images/courses/<?php echo $courses->getImage() ?>" alt="">
                     </div>
                     <div class="col-8 ">
                         <p><?php echo $courses->getName() ?><br>

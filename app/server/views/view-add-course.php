@@ -1,9 +1,10 @@
 <?php
+if($_SESSION['main'] !=='addC'){
  $course = $conC->ActionGetOneCourses($_SESSION['coursId']);
-
+}
  ?>
 
-<form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
+<form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
         <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''){?>
@@ -38,9 +39,12 @@
                 <input class="form-control" type="text" name="NameCourse">
             </div>
         <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
-            <div class="form-group">
+        <div class="row">
+        <div class="col-3"><img src="images/courses/<?php  echo $course->getImage() ?>" alt="" height="100" width="152"></div>
+            <div class="col-9 form-group"><strong>Course:</strong>
                 <input class="border-0" class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName() ?>">
              </div>
+             
         <?php }elseif($_SESSION['main'] =='showC'   &&  $_SESSION['mainEdit'] == 'EditC'){?> 
             <div class="form-group">
                 <input  class="form-control" type="text" name="NameCourse" value="<?php  echo $course->getName()?>">
@@ -51,16 +55,29 @@
     
         <?php if($_SESSION['main'] =='addC' ){ ?>
             <div class="form-group">Description
-            <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ></textarea>
+                <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ></textarea>
             </div> 
+            <div>
+                <input name="AddimageCourse" type="file" >
+            </div>
+
         <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
-            <div class="form-group">
-            <textarea class="border-0" class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ><?php echo $course->getDescription()?></textarea>
+            <div class="col-9 offset-md-3  form-group">
+                <textarea class="border-0" class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ><?php echo $course->getDescription()?></textarea>
             </div> 
+            </div>
         <?php }elseif($_SESSION['main'] =='showC'   &&  $_SESSION['mainEdit'] == 'EditC'){?>
             <div class="form-group"> 
             <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ><?php echo $course->getDescription()?></textarea>
             </div> 
+            <div class="row">
+                <div class="col-3">
+                    <img src="images/courses/<?php  echo $course->getImage() ?>" alt="" height="100" width="152">
+                </div>
+                <div class="col-5">
+                    <input name="imageCourse" type="file" >
+                </div>
+            </div>
         <?php }?>
     
  
@@ -75,7 +92,7 @@
     
     <?php foreach($course->getModelCoureStudents() as $student) {?>
         <tr>
-            <td><img src="images/students/<?php   echo $student->getImage()?>" alt=""></td>
+            <td><img src="images/students/<?php   echo $student->getImage()?>" alt="" height="100" width="152"></td>
             <td><?php   echo $student->getName()?></td>
         </tr>
     <?php }?>
