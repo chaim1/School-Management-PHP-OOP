@@ -9,7 +9,6 @@
         <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''){?>
             <div class="d-flex">
                 <div class="mr-auto p-2">student</div>
-            <!-- <div class="float-left"></div> -->
                 <input  name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
                 <button class="p-2 btn btn-secondary" type="submit" name="editCourse">Edit</button>
             </div>
@@ -32,7 +31,10 @@
 
     
         <?php if($_SESSION['main'] =='addC' ){ ?>
-            <div class="form-group">
+        <br>
+        <br>
+            <h3 class="text-center">Add course</h3>
+            <div class="form-group">name
                 <input class="form-control" type="text" name="NameCourse">
             </div>
         <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
@@ -48,7 +50,7 @@
 
     
         <?php if($_SESSION['main'] =='addC' ){ ?>
-            <div class="form-group">
+            <div class="form-group">Description
             <textarea class="form-control" name="DescriptionCourse" id="" cols="30" rows="10" ></textarea>
             </div> 
         <?php }elseif($_SESSION['main'] =='showC' &&  $_SESSION['mainEdit'] == ''){?>
