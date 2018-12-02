@@ -78,19 +78,10 @@
         
         if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])&&!empty($_FILES['AddimageCourse'])){
             // check image errer
-            
-            // $path= 'images/courses/';
-            // $filename = basename($_FILES['AddimageCourse']['name']);
-            // $a= move_uploaded_file($_FILES['AddimageCourse']['tmp_name'], $path.$filename);
-            // var_dump($a);
-            // die();
-            $fileName = $_FILES['AddimageCourse']['name'];
-            $fileExt = explode('.',$fileName);
-            $fileActualExt = strtolower(end($fileExt));
-            $fileTmpName = $_FILES['AddimageCourse']['tmp_name'];
-            $fileNewName = uniqid('', true).".". $fileActualExt;
-            $fileDastntion = "courses/".$fileNewName;
-            move_uploaded_file($fileTmpName,$fileDastntion);
+
+            $tempFile = $_FILES;
+            $position = "images/courses/";
+            $fileNewName = $conC->ActionInsertImage($position,$tempFile);
             $course = new ModelCourses([
                 'name' => $_POST['NameCourse'],
                 'description'  => $_POST['DescriptionCourse'],

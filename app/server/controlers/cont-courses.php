@@ -1,7 +1,8 @@
 <?php
+require_once 'app/server/controlers/controler.php';
 require_once 'app/server/bl/bl-courses.php';
 
-class coursesContruler{
+class coursesContruler extends IController{
 
     private $blc;
 
