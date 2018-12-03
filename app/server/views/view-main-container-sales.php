@@ -13,11 +13,11 @@ if($_SESSION['main']==""){
 <strong><?php echo  count($arrayOfStudents);?></strong>
 </div>
 <?php }elseif($_SESSION['main']=="addC"){
-    include_once 'app/server/views/view-add-course.php';
+    include_once 'app/server/views/view-add&Shoe-course.php';
  }elseif($_SESSION['main']=="addS"){
-   //  include_once 'app/server/views/view-add-course.php';
+    include_once 'app/server/views/view-add&Shoe-student.php';
  }elseif($_SESSION['main']=="showC"){
-    include_once 'app/server/views/view-add-course.php';
+    include_once 'app/server/views/view-add&Shoe-course.php';
  }elseif($_SESSION['main']=="showS"){
-   //  include_once 'app/server/views/view-add-course.php';
+    include_once 'app/server/views/view-add&Shoe-student.php';
  }?>

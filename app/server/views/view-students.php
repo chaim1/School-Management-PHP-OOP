@@ -12,7 +12,7 @@ $arrayOfStudents = $conS->ActionGetStudent();
     
     <?php foreach($arrayOfStudents as $student) {?>
         <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="get">
-        <input class="d-none" type="number" name="corseId" value="<?php echo $student->getId()?>">
+        <input class="d-none" type="number" name="studentId" value="<?php echo $student->getId()?>">
             <button class="border-0" name="showStudent">
                 <div class="row">
                     <div class="col-4">

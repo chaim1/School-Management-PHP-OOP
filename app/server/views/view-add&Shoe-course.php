@@ -9,7 +9,7 @@ if($_SESSION['main'] !=='addC'){
     <div class="form-group">
         <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''){?>
             <div class="d-flex">
-                <div class="mr-auto p-2">student</div>
+                <div class="mr-auto p-2"><strong><?php echo $course->getName()?></strong></div>
                 <input  name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
                 <button class="p-2 btn btn-secondary" type="submit" name="editCourse">Edit</button>
             </div>

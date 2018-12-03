@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2018 at 02:46 PM
+-- Generation Time: Dec 03, 2018 at 04:50 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -66,7 +66,11 @@ CREATE TABLE `Course` (
 --
 
 INSERT INTO `Course` (`id`, `name`, `description`, `image`) VALUES
-(1, 'php', 'lorem ipsum', 'git.png');
+(1, 'php', 'lorem ipsum', '5c050987626457.92907039.jpeg'),
+(6, 'css ', 'hgdhdgsh', '5c03c4bd9cdf25.06959885.jpg'),
+(7, 'sql', '143434234523143143', '5c04fd427f8e92.80181753.jpg'),
+(9, 'full stack', 'jlkhgjfhgjgk jhvghkg', '5c03c70f839db7.97325227.jpg'),
+(14, 'phtoshop', 'dsgfdgfgsghb gfgfs3523sd4 425fgdfskm/adfngmf.dgm,dsf,/n.mdfgs ,fdbsvnjlgfdlhfm,dsavz xvbnjlreag', '5c03d03be0ad85.97740827.png');
 
 -- --------------------------------------------------------
 
@@ -179,7 +183,7 @@ ALTER TABLE `Administrator`
 -- AUTO_INCREMENT for table `Course`
 --
 ALTER TABLE `Course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `Students`

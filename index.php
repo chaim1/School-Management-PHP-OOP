@@ -13,7 +13,7 @@
     $conS = new studentContruler;
     session_start();
     
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])){
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])){
         $_SESSION['hasErrors'] = false;
         $_SESSION['rank'] = '';
         $_SESSION['name'] = '';
@@ -56,7 +56,7 @@
 
     // for show student
     if(isset($_GET['showStudent'])){
-        $_SESSION['studentId'] = $_GET['corseId'];
+        $_SESSION['studentId'] = $_GET['studentId'];
         $_SESSION['main'] = 'showS';
         $_SESSION['mainEdit'] = '';
     }
@@ -76,6 +76,10 @@
     if(isset($_POST['editCourse'])){
         $_SESSION['mainEdit'] = 'EditC';
     }
+    if(isset($_POST['editStudent'])){
+        $_SESSION['mainEdit'] = 'EditS';
+    }
+    
     // save and update courses
     if(isset($_POST['SaveCourse'])){
         if(empty($_POST['idOfCourseForEdit'])){
