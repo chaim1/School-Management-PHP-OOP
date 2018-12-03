@@ -23,6 +23,11 @@ class coursesContruler extends IController{
     public function ActionInsertCourses($params){
         return $this->blc->set($params);
     }
+    public function ActionUpdateCourse($params){
+        // var_dump($params);
+        //             die();
+        return $this->blc->update($params);
+    } 
 }
 
 ?>

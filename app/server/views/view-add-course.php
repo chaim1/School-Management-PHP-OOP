@@ -17,7 +17,7 @@ if($_SESSION['main'] !=='addC'){
         <?php }?>
         <?php if($_SESSION['main'] =='addC' || $_SESSION['mainEdit'] =='EditC'){?>
             <?php if($_SESSION['main'] =='showC'){?>
-                <input name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
+                <input name="idOfCourseForEdit" style="display:none" type="number" value="<?php echo $course->getId()?>">
             <?php }?>
             <button class="mb-5 float-left btn btn-secondary" type="submit" name="SaveCourse">Save</button>
         <?php }?>
@@ -75,7 +75,8 @@ if($_SESSION['main'] !=='addC'){
                     <img src="images/courses/<?php  echo $course->getImage() ?>" alt="" height="100" width="152">
                 </div>
                 <div class="col-5">
-                    <input name="imageCourse" type="file" >
+                    <input style="display:none" type="text" name="helperNameImage" value="<?php  echo $course->getImage() ?>">
+                    <input name="editImageCourse" type="file" >
                 </div>
                 <br>
                 <div class="pt-4 col-12">

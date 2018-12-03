@@ -44,13 +44,15 @@ include_once 'app/server/models/mod-students.php';
 
     public function update($param)
     {
-        $query = "UPDATE `Course` SET  `name`=:na, `image`=:mg,  `image`=:mg   WHERE `id`=:id";
+        $query = "UPDATE `Course` SET  `name`=:na, `description`=:de,  `image`=:mg   WHERE `id`=:id";
         $params = array(
             "id" => $param->getId(),
             "na" => $param->getName(),
             "de" => $param->getDescription(),
             "mg" => $param->getImage()
         );
+        // var_dump($params);
+        // die();
         $this->getDal()->update($query,$params);
     }
 

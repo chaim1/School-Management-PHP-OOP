@@ -75,22 +75,54 @@
         $_SESSION['mainEdit'] = 'EditC';
     }
     if(isset($_POST['SaveCourse'])){
-        
-        if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])&&!empty($_FILES['AddimageCourse'])){
-            // check image errer
+        if(empty($_POST['idOfCourseForEdit'])){
+            if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])&&!empty($_FILES['AddimageCourse'])){
+                // check image errer
 
-            $tempFile = $_FILES;
-            $position = "images/courses/";
-            $fileNewName = $conC->ActionInsertImage($position,$tempFile);
-            $course = new ModelCourses([
-                'name' => $_POST['NameCourse'],
-                'description'  => $_POST['DescriptionCourse'],
-                'image' => $fileNewName
-            ]);
+                $tempFile = $_FILES;
+                $position = "images/courses/";
+                $fileNewName = $conC->ActionInsertImage($position,$tempFile);
+                $course = new ModelCourses([
+                    'name' => $_POST['NameCourse'],
+                    'description'  => $_POST['DescriptionCourse'],
+                    'image' => $fileNewName
+                ]);
 
-            $conC->ActionInsertCourses($course);
-            $_SESSION['mainEdit'] = '';
+                $conC->ActionInsertCourses($course);
+                $_SESSION['mainEdit'] = '';
 
+            }
+        }elseif(!empty($_POST['idOfCourseForEdit'])){
+            if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])){
+                if(file_exists($_FILES['editImageCourse']['tmp_name'])){
+                    // var_dump($_FILES['editImageCourse']);
+                    // die();
+                    $tempFile = $_FILES;
+                    $position = "images/courses/";
+                    $fileNewName = $conC->ActionInsertImage($position,$tempFile);
+                    $course = new ModelCourses([
+                        'id' => $_POST['idOfCourseForEdit'],
+                        'name' => $_POST['NameCourse'],
+                        'description'  => $_POST['DescriptionCourse'],
+                        'image' => $fileNewName
+                    ]);
+                    // var_dump($course);
+                    // die();
+                    $conC->ActionUpdateCourse($course);
+                    $_SESSION['mainEdit'] = '';
+                }else{
+                    $course = new ModelCourses([
+                        'id' => $_POST['idOfCourseForEdit'],
+                        'name' => $_POST['NameCourse'],
+                        'description'  => $_POST['DescriptionCourse'],
+                        'image' => $_POST['helperNameImage']
+                    ]);
+                    // var_dump($course);
+                    // die();
+                    $conC->ActionUpdateCourse($course);
+                    $_SESSION['mainEdit'] = '';
+                }
+            }
         }
     }
     if(isset($_POST['DeleteCourse'])){
