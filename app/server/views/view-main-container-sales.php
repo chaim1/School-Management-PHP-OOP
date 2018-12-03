@@ -10,7 +10,7 @@ if($_SESSION['main']==""){
 <br>
 <div align="center"><h4>Number Students</h4>
 <hr size="10" noshade width="400" align="center">
-<strong><?php echo  count($arrayOfCourses);?></strong>
+<strong><?php echo  count($arrayOfStudents);?></strong>
 </div>
 <?php }elseif($_SESSION['main']=="addC"){
     include_once 'app/server/views/view-add-course.php';
