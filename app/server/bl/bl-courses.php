@@ -6,6 +6,7 @@ include_once 'app/server/models/mod-students.php';
 
 
  class BusinessLogicCourses extends BusinessLogic {
+     
 
     public function get()
     {
@@ -51,8 +52,6 @@ include_once 'app/server/models/mod-students.php';
             "de" => $param->getDescription(),
             "mg" => $param->getImage()
         );
-        // var_dump($params);
-        // die();
         $this->getDal()->update($query,$params);
     }
 

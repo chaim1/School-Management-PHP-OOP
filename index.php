@@ -74,6 +74,7 @@
     if(isset($_POST['editCourse'])){
         $_SESSION['mainEdit'] = 'EditC';
     }
+    // save and update courses
     if(isset($_POST['SaveCourse'])){
         if(empty($_POST['idOfCourseForEdit'])){
             if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])&&!empty($_FILES['AddimageCourse'])){
@@ -95,8 +96,6 @@
         }elseif(!empty($_POST['idOfCourseForEdit'])){
             if(!empty($_POST['NameCourse'])&&!empty($_POST['DescriptionCourse'])){
                 if(file_exists($_FILES['editImageCourse']['tmp_name'])){
-                    // var_dump($_FILES['editImageCourse']);
-                    // die();
                     $tempFile = $_FILES;
                     $position = "images/courses/";
                     $fileNewName = $conC->ActionInsertImage($position,$tempFile);
@@ -106,8 +105,6 @@
                         'description'  => $_POST['DescriptionCourse'],
                         'image' => $fileNewName
                     ]);
-                    // var_dump($course);
-                    // die();
                     $conC->ActionUpdateCourse($course);
                     $_SESSION['mainEdit'] = '';
                 }else{
@@ -117,8 +114,6 @@
                         'description'  => $_POST['DescriptionCourse'],
                         'image' => $_POST['helperNameImage']
                     ]);
-                    // var_dump($course);
-                    // die();
                     $conC->ActionUpdateCourse($course);
                     $_SESSION['mainEdit'] = '';
                 }
@@ -127,13 +122,7 @@
     }
     if(isset($_POST['DeleteCourse'])){
         if(!empty($_POST['idOfCourse'])){
-            $idCourse = $_POST['idOfCourse'];
-            $_SESSION['hasErrors'] = false;
-            $_SESSION['header'] = 'schoolHome';
-            $_SESSION['main'] = '';
-            $_SESSION['mainEdit'] = '';
-            $_SESSION['coursId'] = '';
-            $_SESSION['studentId'] = '';
+                $conC->ActionDeleteCourse($_POST['idOfCourse'],$_POST['numOfStoudents']);    
         }
     }
     

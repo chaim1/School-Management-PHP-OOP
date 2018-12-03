@@ -14,6 +14,20 @@ if($_SESSION['main'] !=='addC'){
                 <button class="p-2 btn btn-secondary" type="submit" name="editCourse">Edit</button>
             </div>
             <hr>
+
+
+        <?php if ($_SESSION['hasErrors'] == true) { 
+            $arreyOfErrors = $conC->getErrors()?>
+                <ul class="list-group">
+
+                    <?php foreach ($arreyOfErrors as $error) { ?>
+                    <li class="list-group-item list-group-item-danger"><strong><?php echo $error; ?></strong> </li>
+                    <?php } ?>
+
+                </ul>
+            
+        <?php } ?>
+
         <?php }?>
         <?php if($_SESSION['main'] =='addC' || $_SESSION['mainEdit'] =='EditC'){?>
             <?php if($_SESSION['main'] =='showC'){?>
@@ -26,6 +40,7 @@ if($_SESSION['main'] !=='addC'){
     <div class="form-group">
         <?php if($_SESSION['mainEdit'] == 'EditC'&& $_SESSION['rank'] < 3){?>
             <input name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
+            <input name="numOfStoudents" style="display:none" type="number" value="<?php echo count($course->getModelCoureStudents())?>">
             <button class="float-right btn btn-secondary" type="submit" name="DeleteCourse">Delete</button>
         <?php }?>
     </div> 

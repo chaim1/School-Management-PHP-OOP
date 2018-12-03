@@ -14,3 +14,7 @@
 .hide-border{
     
 }
+.scroll{
+    overflow-y: scroll;
+    max-height: 100px;
+}
