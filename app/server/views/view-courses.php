@@ -21,9 +21,9 @@ $arrayOfCourses = $conC->ActionGetCourses();
                     <div class="col-4">
                         <img class="img-nav" src="images/courses/<?php echo $courses->getImage() ?>" alt="">
                     </div>
-                    <div class="col-8 ">
-                        <p><?php echo $courses->getName() ?></p>
-                        <div  class="scroll"><p><?php echo $courses->getDescription() ?></p></div>
+                    <div class="pb-2 col-8 ">
+                        <div><p class=""><?php echo $courses->getName() ?></p></div>
+                        <!-- <div  class="scroll"><p><?php echo $courses->getDescription() ?></p></div> -->
                     </div>
                 </div>
             </button>

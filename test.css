@@ -15,6 +15,7 @@
     
 }
 .scroll{
-    overflow-y: scroll;
-    max-height: 100px;
+    overflow-x: scroll;
+    max-height: 30px;
+    max-width: 70px;
 }

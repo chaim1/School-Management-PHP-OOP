@@ -1,7 +1,9 @@
 <?php
+
 //   var_dump( $_SERVER) ;
-// var_dump($_SESSION);
+//   var_dump($_SESSION);
 //   die();
+
     include_once 'app/server/controlers/cont-administrator.php';
     include_once 'app/server/controlers/cont-courses.php';
     include_once 'app/server/controlers/cont-roles.php';
