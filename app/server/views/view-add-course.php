@@ -77,13 +77,19 @@ if($_SESSION['main'] !=='addC'){
                 <div class="col-5">
                     <input name="imageCourse" type="file" >
                 </div>
+                <br>
+                <div class="pt-4 col-12">
+                    <?php $numStudent = count($course->getModelCoureStudents());
+                    echo 'Total '.$numStudent.' students taking this coutse';
+                    ?>
+                </div>
             </div>
         <?php }?>
     
  
 
 </form>
-<?php if($_SESSION['main'] == 'showC'){?>
+<?php if($_SESSION['main'] == 'showC'&&  $_SESSION['mainEdit'] == ''){?>
 <table class="table">
     <tr>
         <th>image</th>
