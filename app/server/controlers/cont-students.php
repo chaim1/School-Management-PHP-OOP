@@ -4,15 +4,25 @@ require_once 'app/server/bl/bl-students.php';
 
 class studentContruler extends IController{
 
+    private $blS;
+
+    function __construct(){
+        $this->blS = new BusinessLogicStudents;
+    }
+
     public function ActionGetStudent(){
-        $bls =  new  BusinessLogicStudents;
-        $students = $bls->get();
-        return $students;
+        return  $this->blS->get();
+        
     }
     public function ActionGetOneStudent($id){
-        $blc =  new  BusinessLogicStudents;
-        $student = $blc->getOne($id);
-        return $student;
+        return  $this->blS->getOne($id);
+         
+    }
+    public function ActionInsertStudent($params){
+        return $this->blS->set($params);
+    }
+    public function ActionUpdateStudent($params){
+        return $this->blS->update($params);
     }
 }
 

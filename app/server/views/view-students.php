@@ -16,7 +16,7 @@ $arrayOfStudents = $conS->ActionGetStudent();
             <button class="border-0" name="showStudent">
                 <div class="row">
                     <div class="col-4">
-                        <img class="img-nav" src="images/rols/<?php echo $student->getImage() ?>" alt="">
+                        <img class="img-nav" src="images/students/<?php echo $student->getImage() ?>" alt="">
                     </div>
                     <div class="col-8 ">
                         <p><?php echo $student->getName() ?><br>

@@ -13,7 +13,7 @@
     $conS = new studentContruler;
     session_start();
     
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])){
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])&&!isset($_POST['SaveStudent'])){
         $_SESSION['hasErrors'] = false;
         $_SESSION['rank'] = '';
         $_SESSION['name'] = '';
@@ -131,7 +131,54 @@
                 $conC->ActionDeleteCourse($_POST['idOfCourse'],$_POST['numOfStoudents']);    
         }
     }
-    
+
+    if(isset($_POST['SaveStudent'])){
+        if(empty($_POST['idOfStudentForEdit'])){
+            if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_FILES['AddimageStudent'])){
+                // check image errer
+                $tempFile = $_FILES;
+                $position = "images/students/";
+                $fileNewName = $conC->ActionInsertImage($position,$tempFile);
+                $student = new ModelStudents([
+                    'name' => $_POST['NameStudent'],
+                    'phone'  => $_POST['PhoneStudent'],
+                    'email'  => $_POST['EmailStudent'],
+                    'image' => $fileNewName
+                ]);
+
+                $conS->ActionInsertStudent($student);
+                $_SESSION['mainEdit'] = '';
+            }
+        }elseif(!empty($_POST['idOfStudentForEdit'])){
+            if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])){
+                if(file_exists($_FILES['editImageStudent']['tmp_name'])){
+                    $tempFile = $_FILES;
+                    $position = "images/students/";
+                    $fileNewName = $conC->ActionInsertImage($position,$tempFile);
+                    $student = new ModelStudents([
+                        'id' => $_POST['idOfStudentForEdit'],
+                        'name' => $_POST['NameStudent'],
+                        'phone'  => $_POST['PhoneStudent'],
+                        'email'  => $_POST['EmailStudent'],
+                        'image' => $fileNewName
+                    ]);
+                    $conS->ActionUpdateStudent($student);
+                    $_SESSION['mainEdit'] = '';
+                }else{
+                    $student = new ModelStudents([
+                        'id' => $_POST['idOfStudentForEdit'],
+                        'name' => $_POST['NameStudent'],
+                        'phone'  => $_POST['PhoneStudent'],
+                        'email'  => $_POST['EmailStudent'],
+                        'image' => $_POST['helperNameStudent']
+                    ]);
+                    $conS->ActionUpdateStudent($student);
+                    $_SESSION['mainEdit'] = '';
+                }
+            }
+        }
+    }
+        
 ?>
 <!doctype html>
 <html lang="en">

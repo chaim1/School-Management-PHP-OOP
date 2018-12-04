@@ -49,13 +49,16 @@
         <br>
             <h3 class="text-center">Add Student</h3>
             <div class="form-group">Name
-                <input class="form-control" type="text" name="NameCourse">
+                <input class="form-control" type="text" name="NameStudent">
             </div>
             <div class="form-group">Phone
-                <input class="form-control" type="text" name="NameCourse">
+                <input class="form-control" type="number" name="PhoneStudent">
             </div>
             <div class="form-group">Email
-                <input class="form-control" type="text" name="NameCourse">
+                <input class="form-control" type="text" name="EmailStudent">
+            </div>
+            <div>
+                <input name="AddimageStudent" type="file" >
             </div>
             <?php }elseif($_SESSION['main'] =='showS' &&  $_SESSION['mainEdit'] == ''){?>
         <div class="row">
@@ -65,7 +68,7 @@
                 <input class="border-0" class="form-control" type="text" name="NameStudent" value="<?php  echo $student->getName() ?>">
              </div>
              <div class=" form-group"><strong>Phone:</strong>
-                <input class="border-0" class="form-control" type="text" name="PhoneStudent" value="0<?php  echo $student->getPhone() ?>">
+                <input class="border-0" class="form-control" type="number" name="PhoneStudent" value="0<?php  echo $student->getPhone() ?>">
              </div>
              <div class=" form-group"><strong>Email:</strong>
                 <input class="border-0" class="form-control" type="text" name="EmailStudent" value="<?php  echo $student->getEmail() ?>">
@@ -76,10 +79,19 @@
                 <input  class="form-control" type="text" name="NameStudent" value="<?php  echo $student->getName()?>">
              </div>
              <div class="form-group">
-                <input  class="form-control" type="text" name="PhoneStudent" value="0<?php  echo $student->getPhone()?>">
+                <input  class="form-control" type="number" name="PhoneStudent" value="0<?php  echo $student->getPhone()?>">
              </div>
              <div class="form-group">
                 <input  class="form-control" type="text" name="EmailStudent" value="<?php  echo $student->getEmail()?>">
              </div>
+             <div class="row">
+                <div class="col-3">
+                    <img src="images/students/<?php  echo $student->getImage() ?>" alt="" height="100" width="152">
+                </div>
+                <div class="col-5">
+                    <input style="display:none" type="text" name="helperNameStudent" value="<?php  echo $student->getImage() ?>">
+                    <input name="editImageStudent" type="file" >
+                </div>
+            </div>
     <?php }?>
 </form>
