@@ -13,7 +13,7 @@
     $conS = new studentContruler;
     session_start();
     
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])&&!isset($_POST['SaveStudent'])){
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])&&!isset($_POST['SaveStudent'])&&!empty($_POST['DeleteStudent'])){
         $_SESSION['hasErrors'] = false;
         $_SESSION['rank'] = '';
         $_SESSION['name'] = '';
@@ -176,6 +176,11 @@
                     $_SESSION['mainEdit'] = '';
                 }
             }
+        }
+    }
+    if(isset($_POST['DeleteStudent'])){
+        if(!empty($_POST['idOfStudent'])){
+                $conS->ActionDeleteStudent($_POST['idOfStudent']);    
         }
     }
         

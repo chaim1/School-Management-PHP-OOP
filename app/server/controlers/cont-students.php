@@ -24,6 +24,15 @@ class studentContruler extends IController{
     public function ActionUpdateStudent($params){
         return $this->blS->update($params);
     }
+    public function ActionDeleteStudent($id){
+        $_SESSION['hasErrors'] = false;
+        $_SESSION['header'] = 'schoolHome';
+        $_SESSION['main'] = '';
+        $_SESSION['mainEdit'] = '';
+        $_SESSION['coursId'] = '';
+        $_SESSION['studentId'] = '';
+        return $this->blS->delete($id);
+    }
 }
 
 ?>

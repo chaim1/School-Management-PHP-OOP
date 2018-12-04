@@ -36,6 +36,9 @@ include_once 'app/server/models/mod-students.php' ;
 
     public function delete($id)
     {
+        $query = "DELETE FROM `studentCurses` WHERE `stdent_id`=$id";
+        $this->getDal()->delete($query);
+
         $query = "DELETE FROM `Students` WHERE `id`=$id";
         $this->getDal()->delete($query);
     }
