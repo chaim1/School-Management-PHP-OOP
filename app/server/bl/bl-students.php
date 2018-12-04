@@ -65,7 +65,15 @@ include_once 'app/server/models/mod-students.php' ;
         ]);
         $row = $results->fetch();
 
-        return new ModelStudents($row);
+        $student =  new ModelStudents($row);
+
+        $query= 'SELECT * FROM `studentCurses` WHERE `stdent_id`= '.$id.'';
+
+        $results = $this->getDal()->select($query);
+        while ($row = $results->fetch()) {
+            array_push($student->modelCourses , $row);
+        }
+       return $student;
     }
 
 }

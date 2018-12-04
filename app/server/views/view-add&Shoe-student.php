@@ -2,6 +2,9 @@
     if($_SESSION['main'] !=='addS'){
         $student = $conS->ActionGetOneStudent($_SESSION['studentId']);
     }
+    if($_SESSION['main'] =='showS'   &&  $_SESSION['mainEdit'] == 'EditS'){
+        $arrayOfCourses = $conC->ActionGetCourses();
+    }
  ?>
 
 <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="POST" enctype="multipart/form-data">
@@ -94,7 +97,18 @@
                 </div>
             </div>
             <div class="row">
-            
+                    <?php foreach($arrayOfCourses as $courses) {?>
+                        <div class="col-6">
+                            <?php foreach($student->modelCourses as $courseS) {?>
+
+                                <?php if($courseS['course_id']==$courses->getId()){?>
+                                    <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"checked><?php echo $courses->getName() ?><br>
+                                <?php }else{?>
+                                    <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"><?php echo $courses->getName() ?><br>
+                                <?php }?>
+                            <?php }?>
+                        </div>
+                    <?php }?>
             </div>
 
     <?php }?>

@@ -9,7 +9,8 @@ require_once 'app/server/bl/bl-students.php';
         private $name;     
         private $phone; 
         private $email; 
-        private $image;        
+        private $image; 
+        public $modelCourses=[];       
         
         function __construct($arr) {
 
@@ -47,6 +48,9 @@ require_once 'app/server/bl/bl-students.php';
 
         public function getImage() {
             return $this->image;
+        }
+        public function getModelCourses() {
+            return $this->modelCourses['course_id'];
         }
 
         //set
