@@ -97,20 +97,23 @@
                 </div>
             </div>
             <div class="row">
-                    <?php foreach($arrayOfCourses as $courses) {?>
-                        <div class="col-6">
-                            <?php foreach($student->modelCourses as $courseS) {?>
-
-                                <?php if($courseS['course_id']==$courses->getId()){?>
-                                    <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"checked><?php echo $courses->getName() ?><br>
-                                <?php }else{?>
-                                    <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"><?php echo $courses->getName() ?><br>
-                                <?php }?>
-                            <?php }?>
-                        </div>
-                    <?php }?>
+                <?php foreach($arrayOfCourses as $courses) {?>
+                       <div class="col-6">
+                        <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"
+                            <?php foreach ($student->modelCourses as $courseS) { 
+                                if ($courses->getId() == $courseS['course_id']) { 
+                                    echo 'checked';
+                                } }?>
+                            > 
+                        <label class="" for="<?php echo $courses->getName().'select' ?>"><?php echo $courses->getName() ?></label>
+                    </div>
+                <?php }?>
             </div>
 
     <?php }?>
 
 </form>
+
+
+                                    
+                                
