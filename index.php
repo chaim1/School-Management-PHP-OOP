@@ -51,6 +51,7 @@
     // for home adminisfrator
     if(isset($_GET['AdministratorHome'])){
         $_SESSION['header'] = 'AdministratorHome';
+        $_SESSION['main'] = '';
         $_SESSION['mainEdit'] = '';
     }
 
@@ -182,6 +183,15 @@
         if(!empty($_POST['idOfStudent'])){
                 $conS->ActionDeleteStudent($_POST['idOfStudent']);    
         }
+    }
+
+    if(isset($_POST['addAdministator'])){
+        $_SESSION['main'] = 'addA';
+        $_SESSION['mainEdit'] = '';
+    }
+    if(isset($_POST['showAdministrator'])){
+        $_SESSION['main'] = 'showA';
+        $_SESSION['mainEdit'] = '';
     }
         
 ?>
