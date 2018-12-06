@@ -88,7 +88,7 @@ if($_SESSION['main'] !=='addA'){
                 <input   class="form-control" type="text" name="NameAdmin" value="<?php  echo $admin->getName()?>">
              </div>
              <div class=" form-group"><strong>Pone:</strong>
-                0<input  class="form-control" type="number" name="PhoneAdmin" value="<?php  echo $admin->getPhone() ?>">
+                <input  class="form-control" type="number" name="PhoneAdmin" value="<?php  echo '0'.$admin->getPhone() ?>">
             </div> 
             <div class=" form-group"><strong>Email:</strong>
                 <input  class="form-control" type="text" name="EmailAdmin" value="<?php  echo $admin->getEmail() ?>">
