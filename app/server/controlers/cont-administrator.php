@@ -7,13 +7,15 @@ class AdminController  extends IController
         private $arreyOfErrors=[]; 
         // private $AdminModel; 
         private $AdminId; 
+        private $blA;
 
-
+        function __construct(){
+            $this->blA = new BusinessLogicAdministrator;
+        }
 
         function ActionGetLogin($username, $password)
         {
-            $bla =  new  BusinessLogicAdministrator;
-            $admin = $bla->getOneByUserName($username);
+            $admin = $this->blA->getOneByUserName($username);
             if($admin->getUsername() == null){
 
                 $_SESSION['hasErrors']= true;
@@ -40,11 +42,23 @@ class AdminController  extends IController
         }
 
         public function ActionGetAdmin(){
-            $blA =  new  BusinessLogicAdministrator;
-            $Admins = $blA->get();
+            $Admins = $this->blA->get();
             return $Admins;
         }
 
+        public function ActionGetOneAdmin($id){
+            $admin = $this->blA->getOne($id);
+            return $admin;
+        }
+
+        public function ActionInsertAdmin($params){
+            return $this->blA->set($params);
+        }
+
+        public function ActionUpdateAdmin($params){
+            return $this->blA->update($params);
+        } 
+        
         // public function getAdminModel() {
         //     if (empty($this->AdminModel)) {
         //         $bla = new BusinessLogicAdministrator;

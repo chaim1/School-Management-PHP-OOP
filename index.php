@@ -13,7 +13,7 @@
     $conS = new studentContruler;
     session_start();
     
-    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])&&!isset($_POST['SaveStudent'])&&!isset($_POST['DeleteStudent'])&&!isset($_POST['addAdministator'])&&!isset($_POST['showAdministrator']) ){
+    if(!isset($_POST['LoginLogin'])&&!isset($_GET['schoolHome'])&&!isset($_GET['AdministratorHome'])&&!isset($_GET['showStudent'])&&!isset($_GET['showCourse'])&&!isset($_GET['addStudent'])&&!isset($_GET['addCourse'])&&!isset($_POST['editCourse'])&&!isset($_POST['SaveCourse'])&&!isset($_POST['DeleteCourse'])&&!isset($_POST['editStudent'])&&!isset($_POST['SaveStudent'])&&!isset($_POST['DeleteStudent'])&&!isset($_POST['addAdministator'])&&!isset($_POST['showAdministrator'])&&!isset($_POST['editAdmin'])&&!isset($_POST['SaveAdmin'])&&!isset($_POST['DeleteAdmin'])){
         $_SESSION['hasErrors'] = false;
         $_SESSION['rank'] = '';
         $_SESSION['name'] = '';
@@ -24,6 +24,8 @@
         $_SESSION['mainEdit'] = '';
         $_SESSION['coursId'] = '';
         $_SESSION['studentId'] = '';
+        $_SESSION['adminId'] = '';
+
     }
    
     if(isset($_POST['LoginLogin'])){
@@ -190,10 +192,73 @@
         $_SESSION['mainEdit'] = '';
     }
     if(isset($_POST['showAdministrator'])){
+        $_SESSION['adminId'] = $_POST['adminId'];
         $_SESSION['main'] = 'showA';
         $_SESSION['mainEdit'] = '';
     }
-        
+    if(isset($_POST['editAdmin'])){
+        $_SESSION['mainEdit'] = 'EditA';
+    }
+    if(isset($_POST['SaveAdmin'])){
+        if(empty($_POST['idOfAdminForEdit'])){
+            if(!empty($_POST['NameAdmin'])&&!empty($_POST['PhoneAdmin'])&&!empty($_POST['EmailAdmin'])&&!empty($_POST['RoleAdmin'])&&!empty($_FILES['ImageAdmin'])&&!empty($_POST['pwdAdmin'])){
+                // check image errer
+                $tempFile = $_FILES;
+                $position = "images/rols/";
+                // var_dump($tempFile);
+                // die();
+                $fileNewName = $abl->ActionInsertImage($position,$tempFile);
+                $admin = new ModelAdministrator([
+                    'name' => $_POST['NameAdmin'],
+                    'Username' => $_POST['NameAdmin'],
+                    'phone'  => $_POST['PhoneAdmin'],
+                    'email'  => $_POST['EmailAdmin'],
+                    'role_id'  => $_POST['RoleAdmin'],
+                    'pwd'  => $_POST['pwdAdmin'],
+                    'Image' => $fileNewName
+                ]);
+
+                $abl->ActionInsertAdmin($admin);
+                $_SESSION['mainEdit'] = '';
+            }
+        }elseif(!empty($_POST['idOfAdminForEdit'])){
+            if(!empty($_POST['NameAdmin'])&&!empty($_POST['PhoneAdmin'])&&!empty($_POST['EmailAdmin'])&&!empty($_POST['RoleAdmin'])&&!empty($_POST['pwdAdmin'])){
+                if(file_exists($_FILES['ImageAdminForUpdate']['tmp_name'])){
+                    $tempFile = $_FILES;
+                    $position = "images/rols/";
+                    $fileNewName = $abl->ActionInsertImage($position,$tempFile);
+                    $admin = new ModelAdministrator([
+                        'id' => $_POST['idOfAdminForEdit'],
+                        'name' => $_POST['NameAdmin'],
+                        'Username' => $_POST['NameAdmin'],
+                        'phone'  => $_POST['PhoneAdmin'],
+                        'email'  => $_POST['EmailAdmin'],
+                        'role_id'  => $_POST['RoleAdmin'],
+                        'pwd'  => $_POST['pwdAdmin'],
+                        'Image' => $fileNewName
+                    ]);
+                    $abl->ActionUpdateAdmin($admin);
+                    $_SESSION['mainEdit'] = '';
+                }else{
+                    $admin = new ModelAdministrator([
+                        'id' => $_POST['idOfAdminForEdit'],
+                        'name' => $_POST['NameAdmin'],
+                        'Username' => $_POST['NameAdmin'],
+                        'phone'  => $_POST['PhoneAdmin'],
+                        'email'  => $_POST['EmailAdmin'],
+                        'role_id'  => $_POST['RoleAdmin'],
+                        'pwd'  => $_POST['pwdAdmin'],
+                        'Image' => $_POST['helperAdminImage']
+                    ]);
+                    $abl->ActionUpdateAdmin($admin);
+                    $_SESSION['mainEdit'] = '';
+                }
+            }
+        }
+    }
+    
+    
+    
 ?>
 <!doctype html>
 <html lang="en">

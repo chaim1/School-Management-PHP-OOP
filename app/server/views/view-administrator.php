@@ -9,10 +9,11 @@ $arrayOfAdmins = $abl->ActionGetAdmin();
             <h5><strong>Administrators</strong>
                 <button class="ml-5" name="addAdministator">+</button>
             </h5>
-    
+        </form>
     <hr size="10" noshade width="100%" align="left">
-    <?php foreach($arrayOfAdmins as $Admin) {?>
-        <input class="d-none" type="number" name="corseId" value="<?php echo $Admin->getId()?>">
+    <?php foreach($arrayOfAdmins as $Admin) {?>   
+        <form class="pt-3" action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="post">
+            <input class="d-none" type="number" name="adminId" value="<?php echo $Admin->getId()?>">
             <button class="border-0" name="showAdministrator">
                 <div class="row">
                     <div class="col-4">
