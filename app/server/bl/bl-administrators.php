@@ -21,13 +21,16 @@ include_once 'app/server/models/mod-administrator.php' ;
 
     public function set($param)
     {
-        $query = "INSERT INTO `Administrator` ( `role_id`, `name`, `phone`, `email`, `pwd`) VALUES (:ri, :na, :pn, :em, :pw )";
+        $query = "INSERT INTO `Administrator` ( `role_id`, `name`, `phone`, `email`, `pwd`, `Image`,`Username`) VALUES (:ri, :na, :pn, :em, :pw, :mg, :un )";
             $params = array(
                 "ri" => $param->getRole_id(),
                 "na" => $param->getName(),
                 "pn" => $param->getPhone(),
                 "em" => $param->getEmail(),
-                "pw" => $param->getPwd()
+                "pw" => $param->getPwd(),
+                "mg" => $param->getImage(),
+                "un" => $param->getUsername()
+
             );
             
             $this->getDal()->insert($query,$params);
