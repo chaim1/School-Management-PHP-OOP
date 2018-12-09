@@ -31,8 +31,8 @@ include_once 'app/server/models/mod-administrator.php' ;
                 "mg" => $param->getImage(),
                 "pw" => $param->getPwd()
             );
-            var_dump($params);
-            die();
+            // var_dump($params);
+            // die();
             $this->getDal()->insert($query,$params);
             
     }

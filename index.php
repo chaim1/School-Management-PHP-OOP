@@ -205,8 +205,7 @@
                 // check image errer
                 $tempFile = $_FILES;
                 $position = "images/rols/";
-                // var_dump($tempFile);
-                // die();
+                
                 $fileNewName = $abl->ActionInsertImage($position,$tempFile);
                 $admin = new ModelAdministrator([
                     'name' => $_POST['NameAdmin'],
