@@ -25,6 +25,8 @@
         $_SESSION['coursId'] = '';
         $_SESSION['studentId'] = '';
         $_SESSION['adminId'] = '';
+        $_SESSION['image'] = '';
+
 
     }
    
@@ -259,7 +261,8 @@
     }
     
     
-    
+//     var_dump($_SESSION);
+//   die();  
 ?>
 <!doctype html>
 <html lang="en">
