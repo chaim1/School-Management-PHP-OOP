@@ -21,18 +21,18 @@ include_once 'app/server/models/mod-administrator.php' ;
 
     public function set($param)
     {
-        $query = "INSERT INTO `Administrator` ( `role_id`, `name`, `phone`, `email`, `pwd`, `Image`,`Username`) VALUES (:ri, :na, :pn, :em, :pw, :mg, :un )";
+        $query = "INSERT INTO `Administrator` ( `role_id`, `name`, `phone`, `email`,`Username`, `Image`, `pwd`) VALUES (:ri, :na, :pn, :em,  :un ,:mg, :pw)";
             $params = array(
                 "ri" => $param->getRole_id(),
                 "na" => $param->getName(),
                 "pn" => $param->getPhone(),
                 "em" => $param->getEmail(),
-                "pw" => $param->getPwd(),
+                "un" => $param->getUsername(),
                 "mg" => $param->getImage(),
-                "un" => $param->getUsername()
-
+                "pw" => $param->getPwd()
             );
-            
+            var_dump($params);
+            die();
             $this->getDal()->insert($query,$params);
             
     }
@@ -45,13 +45,15 @@ include_once 'app/server/models/mod-administrator.php' ;
 
     public function update($param)
     {
-        $query = "UPDATE `Administrator` SET `role_id`=:ri, `name`=:na, `phone`=:pn, `email`=:em, `pwd`=:pw   WHERE `id`=:id";
+        $query = "UPDATE `Administrator` SET `role_id`=:ri, `name`=:na, `phone`=:pn, `email`=:em, `pwd`=:pw ,`Username`=:un, `Image`=:mg  WHERE `id`=:id";
         $params = array(
             "id" => $param->getId(),
             "ri" => $param->getRole_id(),
             "na" => $param->getName(),
             "pn" => $param->getPhone(),
             "em" => $param->getEmail(),
+            "mg" => $param->getImage(),
+            "un" => $param->getUsername(),
             "pw" => $param->getPwd()
         );
         $this->getDal()->update($query,$params);

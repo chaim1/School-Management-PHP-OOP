@@ -226,7 +226,7 @@
                 if(file_exists($_FILES['ImageAdminForUpdate']['tmp_name'])){
                     $tempFile = $_FILES;
                     $position = "images/rols/";
-                    $fileNewName = $abl->ActionInsertImage($position,$tempFile);
+                    $fileNewName = $abl->ActionInsertImage($position,$tempFile);                    
                     $admin = new ModelAdministrator([
                         'id' => $_POST['idOfAdminForEdit'],
                         'name' => $_POST['NameAdmin'],
@@ -237,6 +237,8 @@
                         'pwd'  => $_POST['pwdAdmin'],
                         'Image' => $fileNewName
                     ]);
+                    // var_dump($admin);
+                    // die();
                     $abl->ActionUpdateAdmin($admin);
                     $_SESSION['mainEdit'] = '';
                 }else{
