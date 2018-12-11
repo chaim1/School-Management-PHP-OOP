@@ -59,6 +59,20 @@ class AdminController  extends IController
         public function ActionUpdateAdmin($params){
             return $this->blA->update($params);
         } 
+
+        public function ActionDeleteAdmin($id){
+                
+                $_SESSION['hasErrors'] = false;
+                $_SESSION['header'] = 'AdministratorHome';
+                $_SESSION['main'] = '';
+                $_SESSION['mainEdit'] = '';
+                $_SESSION['coursId'] = '';
+                $_SESSION['studentId'] = '';
+                return $this->blA->delete($id);
+                include_once 'index.php';
+            
+    
+}
         
         // public function getAdminModel() {
         //     if (empty($this->AdminModel)) {

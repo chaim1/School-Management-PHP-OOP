@@ -35,7 +35,9 @@ if($_SESSION['main'] !=='addA'){
     <div class="form-group">
         <?php if($_SESSION['mainEdit'] == 'EditA'&& $_SESSION['rank'] ===1){?>
             <input name="idOfAdmin" style="display:none" type="number" value="<?php echo $admin->getId()?>">
-            <button class="float-right btn btn-secondary" type="submit" name="DeleteAdmin">Delete</button>
+            <?php if($admin->getRole_id()!==1){ ?>
+                <button class="float-right btn btn-secondary" type="submit" name="DeleteAdmin">Delete</button>
+            <?php }?>
         <?php }?>
     </div>
 
@@ -55,7 +57,10 @@ if($_SESSION['main'] !=='addA'){
                 <input class="form-control" type="text" name="EmailAdmin">
             </div>
             <div class="form-group">Role
-                <input class="form-control" type="number" name="RoleAdmin">
+                <select class="form-control" name="RoleAdmin" id="" type="number">
+                    <option value="2">manager</option>
+                    <option value="3">sales</option>
+                </select>
             </div>
             <div class="form-group">password
                 <input class="form-control" type="password" name="pwdAdmin">

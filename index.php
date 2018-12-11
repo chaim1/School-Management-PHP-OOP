@@ -282,6 +282,11 @@
             }
         }
     }
+    if(isset($_POST['DeleteAdmin'])){
+        if(!empty($_POST['idOfAdmin'])){
+                $abl->ActionDeleteAdmin($_POST['idOfAdmin']);    
+        }
+    }
     
     
 //     var_dump($_SESSION);
