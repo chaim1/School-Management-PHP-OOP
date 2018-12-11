@@ -81,9 +81,9 @@ if($_SESSION['main'] !=='addA'){
             <div class=" form-group"><strong>Email:</strong>
                 <input class="border-0" class="form-control" type="text" name="EmailAdmin" value="<?php  echo $admin->getEmail() ?>">
             </div>
-            <div class=" form-group"><strong>Role:</strong>
-                <input class="border-0" class="form-control" type="number" name="RoleAdmin" value="<?php  echo $admin->getRole_id() ?>">
-            </div>
+                <div class=" form-group"><strong>Role:</strong>
+                    <input class="border-0" class="form-control" type="number" name="RoleAdmin" value="<?php  echo $admin->getRole_id() ?>">
+                </div>
             <div class="form-group"><strong>password:</strong>
                 <input class="form-control border-0" type="password" name="pwdAdmin" value="<?php  echo $admin->getPwd() ?>">
             </div>
@@ -98,9 +98,11 @@ if($_SESSION['main'] !=='addA'){
             <div class=" form-group"><strong>Email:</strong>
                 <input  class="form-control" type="text" name="EmailAdmin" value="<?php  echo $admin->getEmail() ?>">
             </div>
-            <div class=" form-group"><strong>Role:</strong>
-                <input  class="form-control" type="number" name="RoleAdmin" value="<?php  echo $admin->getRole_id() ?>">
-            </div>
+            <?php if($admin->getRole_id()>$_SESSION['rank']){?>
+                <div class=" form-group"><strong>Role:</strong>
+                    <input  class="form-control" type="number" name="RoleAdmin" value="<?php  echo $admin->getRole_id() ?>">
+                </div>
+            <?php }?>
             <div class=" form-group">password
                 <input class="form-control" type="password" name="pwdAdmin" value="<?php  echo $admin->getPwd() ?>">
             </div>
