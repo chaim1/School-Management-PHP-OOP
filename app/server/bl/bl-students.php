@@ -30,7 +30,7 @@ include_once 'app/server/models/mod-students.php' ;
                 "mg" => $param->getImage()
             );
             
-            $this->getDal()->insert($query,$params);
+            return $idStudent = $this->getDal()->insert($query,$params);
             
     }
     public function deleteSC($id)

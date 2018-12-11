@@ -116,7 +116,7 @@
             
 
     <?php }?>
-    <?php if($_SESSION['main'] =='showS'){?> 
+    <?php if($_SESSION['main'] =='showS' &&$_SESSION['mainEdit'] == ''){?> 
         <div class="row">
                 <?php foreach($arrayOfCourses as $courses) {?>
                        

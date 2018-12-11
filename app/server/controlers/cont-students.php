@@ -18,12 +18,18 @@ class studentContruler extends IController{
         return  $this->blS->getOne($id);
          
     }
-    public function ActionInsertStudent($params){
-        return $this->blS->set($params);
+    public function ActionInsertStudent($params,$paramsC=null){
+ 
+        $idStident =  $this->blS->set($params);
+        if($paramsC){
+           
+            for($i=0; $i<sizeof($paramsC); $i++){
+                $this->blS->setStudentCurses($paramsC[$i],$idStident);
+            }
+        }
     }
     public function ActionUpdateStudent($params,$paramsC=null){
-        // var_dump($paramsC);
-        //     die();
+
         if($paramsC){
             $this->blS->deleteSC($params->getId());
             for($i=0; $i<sizeof($paramsC); $i++){

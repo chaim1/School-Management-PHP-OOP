@@ -150,8 +150,13 @@
                     'email'  => $_POST['EmailStudent'],
                     'image' => $fileNewName
                 ]);
-
-                $conS->ActionInsertStudent($student);
+                if(!empty($_POST['selected'])){
+                    $coursesEnrolled = [];
+                    foreach ($_POST['selected'] as $course) {
+                        array_push($coursesEnrolled, $course);
+                    }
+                }
+                $conS->ActionInsertStudent($student,$coursesEnrolled);
                 $_SESSION['mainEdit'] = '';
             }
         }elseif(!empty($_POST['idOfStudentForEdit'])){
