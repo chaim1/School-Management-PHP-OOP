@@ -97,7 +97,7 @@
                 </div>
             </div>
         <?php }?>
-        <?php if($_SESSION['main'] =='showS'   &&  $_SESSION['mainEdit'] == 'EditS'||$_SESSION['main'] =='addS' ){?> 
+        <?php if($_SESSION['main'] =='showS'   &&  $_SESSION['mainEdit'] == 'EditS' ){?> 
 
             <div class="row">
                 <?php foreach($arrayOfCourses as $courses) {?>
@@ -129,6 +129,16 @@
                 <?php }?>
             </div>
     <?php }?>
+    <?php if($_SESSION['main'] =='addS'){ ?>
+        <div class="row">
+            <?php foreach($arrayOfCourses as $courses) {?>
+                <div class="col-3">
+                    <input type="checkbox" name="selected[]" value="<?php echo $courses->getId()?>">
+                    <label class="" for="<?php echo $courses->getName().'select' ?>"><?php echo $courses->getName() ?></label>
+                </div>
+            <?php }?>
+        </div>
+    <?php  }?>
 
 </form>
 

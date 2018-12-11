@@ -158,6 +158,8 @@
                 }
                 $conS->ActionInsertStudent($student,$coursesEnrolled);
                 $_SESSION['mainEdit'] = '';
+                $_SESSION['main'] = '';
+
             }
         }elseif(!empty($_POST['idOfStudentForEdit'])){
             if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_SESSION['helperPrimery'])||!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_POST['selected'])){
@@ -182,6 +184,7 @@
                         }
                         $conS->ActionUpdateStudent($student,$coursesEnrolled);
                         $_SESSION['mainEdit'] = '';
+                        $_SESSION['main'] = '';
                         }
                 }else{
                     $student = new ModelStudents([
@@ -197,19 +200,21 @@
                                 array_push($coursesEnrolled, $course);
                             }
                             $conS->ActionUpdateStudent($student,$coursesEnrolled);
-                            $_SESSION['mainEdit'] = '';                            
+                            $_SESSION['mainEdit'] = '';    
+                            $_SESSION['main'] = '';                        
                         }
                     // $coursesEnrolled = [];
                     // array_push($coursesEnrolled, null);
                     $conS->ActionUpdateStudent($student);
                     $_SESSION['mainEdit'] = '';
+                    $_SESSION['main'] = '';
                 }
             }
         }
     }
     if(isset($_POST['DeleteStudent'])){
         if(!empty($_POST['idOfStudent'])){
-                $conS->ActionDeleteStudent($_POST['idOfStudent']);    
+            $conS->ActionDeleteStudent($_POST['idOfStudent']);    
         }
     }
     if(isset($_POST['addAdministator'])){
