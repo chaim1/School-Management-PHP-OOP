@@ -26,6 +26,7 @@
         $_SESSION['studentId'] = '';
         $_SESSION['adminId'] = '';
         $_SESSION['image'] = '';
+        $_SESSION['helperPrimery']=[];
 
 
     }
@@ -136,7 +137,6 @@
                 $conC->ActionDeleteCourse($_POST['idOfCourse'],$_POST['numOfStoudents']);    
         }
     }
-
     if(isset($_POST['SaveStudent'])){
         if(empty($_POST['idOfStudentForEdit'])){
             if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_FILES['AddimageStudent'])){
@@ -155,11 +155,14 @@
                 $_SESSION['mainEdit'] = '';
             }
         }elseif(!empty($_POST['idOfStudentForEdit'])){
-            if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])){
+            if(!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_SESSION['helperPrimery'])||!empty($_POST['NameStudent'])&&!empty($_POST['PhoneStudent'])&&!empty($_POST['EmailStudent'])&&!empty($_POST['selected'])){
                 if(file_exists($_FILES['editImageStudent']['tmp_name'])){
                     $tempFile = $_FILES;
                     $position = "images/students/";
                     $fileNewName = $conC->ActionInsertImage($position,$tempFile);
+                    // if(!empty($_POST['selected[]'])){
+                        
+                    // }
                     $student = new ModelStudents([
                         'id' => $_POST['idOfStudentForEdit'],
                         'name' => $_POST['NameStudent'],
@@ -167,8 +170,14 @@
                         'email'  => $_POST['EmailStudent'],
                         'image' => $fileNewName
                     ]);
-                    $conS->ActionUpdateStudent($student);
-                    $_SESSION['mainEdit'] = '';
+                    if(!empty($_POST['selected'])){
+                        $coursesEnrolled = [];
+                        foreach ($_POST['selected'] as $course) {
+                            array_push($coursesEnrolled, $course);
+                        }
+                        $conS->ActionUpdateStudent($student,$coursesEnrolled);
+                        $_SESSION['mainEdit'] = '';
+                        }
                 }else{
                     $student = new ModelStudents([
                         'id' => $_POST['idOfStudentForEdit'],
@@ -177,6 +186,16 @@
                         'email'  => $_POST['EmailStudent'],
                         'image' => $_POST['helperNameStudent']
                     ]);
+                        if(!empty($_POST['selected'])){
+                            $coursesEnrolled = [];
+                            foreach ($_POST['selected'] as $course) {
+                                array_push($coursesEnrolled, $course);
+                            }
+                            $conS->ActionUpdateStudent($student,$coursesEnrolled);
+                            $_SESSION['mainEdit'] = '';                            
+                        }
+                    // $coursesEnrolled = [];
+                    // array_push($coursesEnrolled, null);
                     $conS->ActionUpdateStudent($student);
                     $_SESSION['mainEdit'] = '';
                 }
@@ -188,7 +207,6 @@
                 $conS->ActionDeleteStudent($_POST['idOfStudent']);    
         }
     }
-
     if(isset($_POST['addAdministator'])){
         $_SESSION['main'] = 'addA';
         $_SESSION['mainEdit'] = '';

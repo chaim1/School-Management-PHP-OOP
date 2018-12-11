@@ -34,7 +34,8 @@ class AdminController  extends IController
                 $_SESSION['rank'] = $admin->getRole_id();
                 $_SESSION['name'] = $admin->getName();
                 $_SESSION['type'] = $admin->getRoleModel()->getDescription();
-                $_SESSION['image'] = $admin->getImage();     
+                $_SESSION['image'] = $admin->getImage(); 
+                $_SESSION['hasErrors'] = false;    
             }
         } 
         public function getErrors() {

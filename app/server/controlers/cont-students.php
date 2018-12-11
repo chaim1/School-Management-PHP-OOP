@@ -21,7 +21,18 @@ class studentContruler extends IController{
     public function ActionInsertStudent($params){
         return $this->blS->set($params);
     }
-    public function ActionUpdateStudent($params){
+    public function ActionUpdateStudent($params,$paramsC=null){
+        // var_dump($paramsC);
+        //     die();
+        if($paramsC){
+            $this->blS->deleteSC($params->getId());
+            for($i=0; $i<sizeof($paramsC); $i++){
+                $this->blS->setStudentCurses($paramsC[$i],$params->getId());
+            }
+            
+            return $this->blS->update($params);
+        }
+
         return $this->blS->update($params);
     }
     public function ActionDeleteStudent($id){

@@ -33,11 +33,15 @@ include_once 'app/server/models/mod-students.php' ;
             $this->getDal()->insert($query,$params);
             
     }
-
-    public function delete($id)
+    public function deleteSC($id)
     {
         $query = "DELETE FROM `studentCurses` WHERE `stdent_id`=$id";
         $this->getDal()->delete($query);
+
+    }
+    public function delete($id)
+    {
+        $this->deleteSC($id);
 
         $query = "DELETE FROM `Students` WHERE `id`=$id";
         $this->getDal()->delete($query);
@@ -74,6 +78,25 @@ include_once 'app/server/models/mod-students.php' ;
             array_push($student->modelCourses , $row);
         }
        return $student;
+    }
+
+    public function setStudentCurses($idc,$idS)
+    {
+        $query = "INSERT INTO `studentCurses` (`stdent_id`,`course_id`) VALUES (:Si, :Ci)";
+            $params = array(
+                "Si" => $idS,
+                "Ci" => $idc
+            );
+            
+            $this->getDal()->insert($query,$params);
+            
+    }
+    public function deleteCS($idC,$idS)
+    {
+        $query = "DELETE FROM `studentCurses` WHERE `stdent_id`=$idS AND `course_id`=$idC";
+        
+        $this->getDal()->delete($query);
+
     }
 
 }

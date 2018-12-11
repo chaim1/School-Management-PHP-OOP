@@ -96,12 +96,16 @@
                     <input name="editImageStudent" type="file" >
                 </div>
             </div>
+        <?php }?>
+        <?php if($_SESSION['main'] =='showS'   &&  $_SESSION['mainEdit'] == 'EditS'||$_SESSION['main'] =='addS' ){?> 
+
             <div class="row">
                 <?php foreach($arrayOfCourses as $courses) {?>
                        <div class="col-6">
-                        <input type="checkbox" name="<?php echo $courses->getName().'select' ?>" value="<?php echo $courses->getId()?>"
+                        <input type="checkbox" name="selected[]" value="<?php echo $courses->getId()?>"
                             <?php foreach ($student->modelCourses as $courseS) { 
                                 if ($courses->getId() == $courseS['course_id']) { 
+                                    array_push($_SESSION['helperPrimery'], $courseS['course_id']);
                                     echo 'checked';
                                 } }?>
                             > 
@@ -109,7 +113,21 @@
                     </div>
                 <?php }?>
             </div>
+            
 
+    <?php }?>
+    <?php if($_SESSION['main'] =='showS'){?> 
+        <div class="row">
+                <?php foreach($arrayOfCourses as $courses) {?>
+                       
+                            <?php foreach ($student->modelCourses as $courseS) { 
+                                if ($courses->getId() == $courseS['course_id']) { 
+                                    echo '<div class="mt-1 col-6"><img src="images/courses/'.$courses->getImage().'" alt="" height="40" width="52">'.$courses->getName().'</div>';
+                                } }?>
+                             
+                    
+                <?php }?>
+            </div>
     <?php }?>
 
 </form>
