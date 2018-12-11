@@ -7,7 +7,7 @@ if($_SESSION['main'] !=='addC'){
 <form action="<?php echo basename($_SERVER['PHP_SELF'])?>" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
-        <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''){?>
+        <?php if($_SESSION['main'] =='showC' && $_SESSION['mainEdit'] == ''&& $_SESSION['rank'] < 3){?>
             <div class="d-flex">
                 <div class="mr-auto p-2"><strong><?php echo $course->getName()?></strong></div>
                 <input  name="idOfCourse" style="display:none" type="number" value="<?php echo $course->getId()?>">
