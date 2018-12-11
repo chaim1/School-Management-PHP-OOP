@@ -41,9 +41,9 @@
     </div> 
 
     <div class="form-group">
-        <?php if($_SESSION['mainEdit'] == 'EditS'&& $_SESSION['rank'] < 3){?>
-            <input name="idOfStudent" style="display:none" type="number" value="<?php echo $student->getId()?>">
-            <button class="float-right btn btn-secondary" type="submit" name="DeleteStudent">Delete</button>
+        <?php if($_SESSION['mainEdit'] == 'EditS'){?>
+            <input  name="idOfStudent" style="display:none" type="number" value="<?php echo $student->getId()?>">
+            <button class="float-right btn btn-secondary" type="submit" name="DeleteStudent" onclick='valid()'>Delete</button>
         <?php }?>
     </div> 
 
