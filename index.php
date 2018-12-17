@@ -300,7 +300,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>ProjectSchool</title>
+    <link rel="shortcut icon" type="image/png" href="jbLogo.png"/>
+    <title>ProjectSchoolChaim</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
