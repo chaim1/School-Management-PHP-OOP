@@ -56,7 +56,7 @@ final class DataAccessLayer
         $pdo = new PDO($this->dsn, $this->user, $this->pass, $this->opt);
         $statement = $pdo->prepare($query);
         $statement->execute($params);
-        return $pdo->lastInsertId();
+        return $pdo->lastInsertId(); 
     }
 
     public function delete($query){
